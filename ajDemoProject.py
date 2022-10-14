@@ -110,7 +110,6 @@ spark.sql('show tables;').show()
 
 
 ### WRITING THE TABLE IN SNOWFLAKE 
-# Snowflake Code is not working 
 """
 def main():
     SNOWFLAKE_SOURCE_NAME = "net.snowflake.spark.snowflake"
