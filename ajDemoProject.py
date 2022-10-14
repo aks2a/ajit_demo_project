@@ -24,13 +24,21 @@ spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.ap-sout
 
 
 ### CREATING THE REGULAR EXP PATTERNS FOR EXTRACTING THE REQUIRE DATA
+# Extracting IP data
 data_Pattern = r'(^\S+\.[\S+\.]+\S+)\s'
+# Extract TimeStamp
 time_Pattern = r'(\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2})' 
+# Get Method Column 
 gm=r'GET|POST|HEAD'
+# URL Extractions 
 u_Patt=r'\s\S+\sHTTP/1.1"'
+# status Pattern 
 s_Pattern = r'\s(\d{3})\s'
+# Content Size
 cs_Pattern = r'\s(\d+)\s"'
+# referer value
 rv=r'("https(\S+)")'
+# User Agent 
 u_Agent=r'(Mozilla|Dalvik|Goog|torob|Bar)(\S+\s+)*'
 
 
@@ -101,8 +109,8 @@ spark.sql('show databases;').show()
 spark.sql('show tables;').show()
 
 
-### WRITING THE TABLE IN SNOWFLAKE
-# Code is not working 
+### WRITING THE TABLE IN SNOWFLAKE 
+# Snowflake Code is not working 
 """
 def main():
     SNOWFLAKE_SOURCE_NAME = "net.snowflake.spark.snowflake"
