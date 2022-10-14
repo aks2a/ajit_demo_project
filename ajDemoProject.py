@@ -5,7 +5,7 @@ import boto3
 ### BUILDING THE SPARK SESSION
 spark = SparkSession.builder.master('local').appName('unstructured').enableHiveSupport().getOrCreate()
 data = 'C:\Users\ajit.ks\Desktop\training_dataProject.txt'
-#data = 'D:\\bigdata\\log_data_ip_request.txt'
+
 df = spark.read.format('text').load(data)
 
 Access_key_ID="*****"
@@ -25,22 +25,14 @@ spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.ap-sout
 
 ### CREATING THE REGULAR EXP PATTERNS FOR EXTRACTING THE REQUIRE DATA
 data_Pattern = r'(^\S+\.[\S+\.]+\S+)\s'
-#host_p = r'([\S+\.]+)'
 time_Pattern = r'(\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2})' 
-#time_pattern = r'(\d+/\w+/\d+[:\d]+)'
 gm=r'GET|POST|HEAD'
-#GET=r'GET|POST|HEAD'
 u_Patt=r'\s\S+\sHTTP/1.1"'
-#request_p=r'\s\S+\sHTTP/1.1"'
 s_Pattern = r'\s(\d{3})\s'
-#status_p=r'\s\d{3}\s'
 cs_Pattern = r'\s(\d+)\s"'
-#size_p=r'\s(\d+)\s"'
 rv=r'("https(\S+)")'
-#ree=r'("https(\S+)")'
 u_Agent=r'(Mozilla|Dalvik|Goog|torob|Bar)(\S+\s+)*'
-#usery=r'(Mozilla|Dalvik|Goog|torob|Bar)(\S+\s+)*'
-#usery=r'"(Mozilla|Dalvik|Goog|torob|Bar).\d\S+\s\((\S\w+;?\s\S+(\s\d\.(\d\.)?\d)?)'
+
 
 ### ARRANGING THE EXTRACTING DATA INTO DATAFRAME
 raw_df=df.withColumn("id",monotonically_increasing_id())\
