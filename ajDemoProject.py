@@ -118,8 +118,8 @@ def main():
     target_table_name = "curatedtbl"
     snowflake_options = {
         "sfUrl": "jn94146.ap-south-1.aws.snowflakecomputing.com",
-        "sfUser": "ajitks",
-        "sfPassword": "9555@snowflake",
+        "sfUser": "******",
+        "sfPassword": "**************",
         "sfDatabase": CURATEDS3,
         "sfSchema": CURATEDS3_schema,
         "sfWarehouse": "curatedS3_snowflake"
